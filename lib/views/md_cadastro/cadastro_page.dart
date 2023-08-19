@@ -117,7 +117,9 @@ class CadastroPage extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Modular.to.navigate('/home/login/cadastro/anuncios_criados/');
+                        },
                       ),
                     ),
                   ),

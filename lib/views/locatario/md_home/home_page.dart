@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
 
   void _onItemTapped(int index) {
     if (index == 2) {
-      Modular.to.pushNamed('/contatos');
+      Modular.to.pushNamed('/home/contatos');
     }
     setState(() {
       _selectedIndex = index;
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                         backgroundColor: const Color(0xFF6AA8FF),
                       ),
                       onPressed: () {
-                        Modular.to.pushNamed('/login');
+                        Modular.to.pushNamed('/home/login');
                       },
                       child: const Text(
                         'Entrar',

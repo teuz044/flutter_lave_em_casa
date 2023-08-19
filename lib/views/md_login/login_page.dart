@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'auth_service.dart';
+
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -126,7 +128,14 @@ class LoginPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        onPressed: () => {},
+                        onPressed: () => {
+                          if (AuthService.session.isProprietario == false)
+                            {
+                              Modular.to.navigate('/home/login/anuncios_criados')
+                            } else {
+                              Modular.to.navigate('/home/login/home_proprietario') 
+                            }
+                        },
                       ),
                     ),
                   ),
@@ -181,7 +190,7 @@ class LoginPage extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         onPressed: () {
-                          Modular.to.pushNamed('/cadastro');
+                          Modular.to.pushNamed('/home/login/cadastro');
                         },
                       )),
                 ],
