@@ -7,6 +7,7 @@ class ContatosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Stack(
         children: [
           Image.asset(
@@ -40,7 +41,7 @@ class ContatosPage extends StatelessWidget {
               children: [
                 const Padding(
                   padding: EdgeInsets.only(right:20.0),
-                  child: Text('Contatos', style: TextStyle(fontFamily: 'Montserrat', fontSize: 24, color: Colors.white60, fontWeight: FontWeight.bold),),
+                  child: Text('Contatos', style: TextStyle(fontFamily: 'Montserrat', fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),),
                 ),
                 const SizedBox(height: 16,),
                 Column(
@@ -58,7 +59,7 @@ class ContatosPage extends StatelessWidget {
                             SizedBox(
                               width: 8,
                             ),
-                            Text('Email'),
+                            Text('Email', style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),),
                           ],
                         ),
                       ),
@@ -80,7 +81,7 @@ class ContatosPage extends StatelessWidget {
                             SizedBox(
                               width: 8,
                             ),
-                            Text('Telefone'),
+                            Text('Telefone', style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),),
                           ],
                         ),
                       ),
@@ -103,7 +104,7 @@ class ContatosPage extends StatelessWidget {
                               SizedBox(
                                 width: 8,
                               ),
-                              Text('Whatsapp'),
+                              Text('Whatsapp', style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),),
                             ],
                           ),
                         ),

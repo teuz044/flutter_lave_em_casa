@@ -4,6 +4,7 @@ import 'package:lave_em_casa_flutter/views/md_cadastro/cadastro_page.dart';
 import '../locatario/md_anuncios_criados/anuncios_criados_module.dart';
 
 class CadastroModule extends Module {
+  @override
   void binds(i) {
     // i.addLazySingleton();
   }

@@ -2,6 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lave_em_casa_flutter/views/md_contatos/contatos_page.dart';
 
 class ContatosModule extends Module {
+  @override
   void binds(i) {
     // i.addLazySingleton();
   }

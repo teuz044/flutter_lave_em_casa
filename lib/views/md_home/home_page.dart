@@ -48,9 +48,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
+        title: Text('Bem vindo!'),
           backgroundColor: const Color(0xFF0B3D6F),
           leading: Padding(
-            padding: const EdgeInsets.only(top: 8.0, bottom: 8, left: 24),
+            padding: const EdgeInsets.only(top: 8.0, bottom: 8  , left: 24),
             child: Image.asset('assets/img/logopngpequena.png'),
           ),
           actions: [
@@ -63,11 +64,11 @@ class _HomePageState extends State<HomePage> {
                         backgroundColor: const Color(0xFF6AA8FF),
                       ),
                       onPressed: () {
-                        Modular.to.pushNamed('/home/login');
+                        Modular.to.pushNamed('/home/escolha_login/');
                       },
                       child: const Text(
                         'Entrar',
-                        style: TextStyle(fontFamily: 'Montserrat'),
+                        style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),
                       )), // IconButton(
                   //   onPressed: () {},
                   //   icon: const Icon(
@@ -96,28 +97,24 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            const SizedBox(
+            const SizedBox( 
               height: 16,
             ),
             const Text(
-              'Lave suas roupas em residências em seu bairro!',
-              textAlign: TextAlign.start,
+              'Perto de sua casa!',
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontFamily: 'Montserrat',
-                  fontSize: 24,
+                  fontSize: 20,
                   color: Color(0xFF0B3D6F),
                   fontWeight: FontWeight.bold),
             ),
-            Container(
-              height: 2,
-              margin: const EdgeInsets.only(right: 210),
-              decoration: const BoxDecoration(color: Color(0xFF6AA8FF)),
-            ),
+
             const SizedBox(
               height: 16,
             ),
             SizedBox(
-              height: 400,
+              height: 450,
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
@@ -126,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                   return Card(
                     elevation: 3,
                     child: ListTile(
-                      title: const Text('Lave aqui'),
+                      title: const Text('Lave aqui', style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600),),
                       subtitle: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [Text('Endereço'), Text('Preço: 14,00')],
@@ -143,21 +140,6 @@ class _HomePageState extends State<HomePage> {
             ),
             const Divider(
               thickness: 3,
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 8.0,
-                right: 8,
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade900,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
             ),
           ],
         ),
@@ -184,9 +166,12 @@ class _HomePageState extends State<HomePage> {
               color: Colors.white,
             ),
             label: 'Contatos',
+            
           ),
         ],
         currentIndex: _selectedIndex,
+        unselectedLabelStyle: const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600, color: Colors.white),
+        selectedLabelStyle: const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600, color: Colors.white),
         backgroundColor: const Color(0xFF0B3D6F),
         selectedItemColor: Colors.blue[200],
         onTap: _onItemTapped,

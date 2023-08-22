@@ -1,4 +1,4 @@
-import '../utils/session.dart';
+import '../../utils/session.dart';
 
 class AuthService {
   static Session session = Session(); // Instância única da classe Session
