@@ -46,7 +46,7 @@ class _HomeProprietarioPageState extends State<HomeProprietarioPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Colors.white,
       appBar: AppBar(
           backgroundColor: const Color(0xFF0B3D6F),
           leading: Padding(
@@ -58,7 +58,10 @@ class _HomeProprietarioPageState extends State<HomeProprietarioPage> {
               padding: const EdgeInsets.only(right: 16.0),
               child: Row(
                 children: [
-                  Text('Bem vindo ao menu do proprietário!', style: TextStyle(fontFamily: 'Montserrat'),),
+                  const Text(
+                    'Bem vindo ao menu do proprietário!',
+                    style: TextStyle(fontFamily: 'Montserrat'),
+                  ),
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(
@@ -72,25 +75,250 @@ class _HomeProprietarioPageState extends State<HomeProprietarioPage> {
             ),
           ]),
       body: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8),
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 8.0,
-                right: 8,
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade900,
-                  borderRadius: BorderRadius.circular(16),
+          padding: const EdgeInsets.only(left: 8.0, right: 8),
+          child: GridView.count(
+            primary: false,
+            padding: const EdgeInsets.all(30),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+            children: <Widget>[
+              InkWell(
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 2.0, // soften the shadow
+                        spreadRadius: 2.0, //extend the shadow
+                        offset: Offset(
+                          1.0, // Move to right 5  horizontally
+                          1.0, // Move to bottom 5 Vertically
+                        ),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.payment_outlined,
+                        size: 105,
+                        color: Color.fromARGB(156, 6, 80, 183),
+                      ),
+                      Divider(),
+                      Text(
+                        "Meus Anuncios",
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
+                onTap: () {},
               ),
-            ),
-          ],
-        ),
-      ),
+              InkWell(
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 2.0, // soften the shadow
+                        spreadRadius: 2.0, //extend the shadow
+                        offset: Offset(
+                          1.0, // Move to right 5  horizontally
+                          1.0, // Move to bottom 5 Vertically
+                        ),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.calendar_today_outlined,
+                        size: 105,
+                        color: Color.fromARGB(156, 6, 80, 183),
+                      ),
+                      Divider(),
+                      Text(
+                        "Agendamentos",
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              ),
+              InkWell(
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 2.0, // soften the shadow
+                        spreadRadius: 2.0, //extend the shadow
+                        offset: Offset(
+                          1.0, // Move to right 5  horizontally
+                          1.0, // Move to bottom 5 Vertically
+                        ),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.attach_money_outlined,
+                        size: 105,
+                        color: Color.fromARGB(156, 6, 80, 183),
+                      ),
+                      Divider(),
+                      Text(
+                        "Faturamento Total",
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              ),
+              InkWell(
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 2.0, // soften the shadow
+                        spreadRadius: 2.0, //extend the shadow
+                        offset: Offset(
+                          1.0, // Move to right 5  horizontally
+                          1.0, // Move to bottom 5 Vertically
+                        ),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.person,
+                        size: 105,
+                        color: Color.fromARGB(156, 6, 80, 183),
+                      ),
+                      Divider(),
+                      Text(
+                        "Meu Perfil",
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              ),
+              InkWell(
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 2.0, // soften the shadow
+                        spreadRadius: 2.0, //extend the shadow
+                        offset: Offset(
+                          1.0, // Move to right 5  horizontally
+                          1.0, // Move to bottom 5 Vertically
+                        ),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.energy_savings_leaf_outlined,
+                        size: 105,
+                        color: Color.fromARGB(156, 6, 80, 183),
+                      ),
+                      Divider(),
+                      Text(
+                        "Gasto de Energia",
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              ),
+              InkWell(
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 2.0, // soften the shadow
+                        spreadRadius: 2.0, //extend the shadow
+                        offset: Offset(
+                          1.0, // Move to right 5  horizontally
+                          1.0, // Move to bottom 5 Vertically
+                        ),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.add_box_outlined,
+                        size: 105,
+                        color: Color.fromARGB(156, 6, 80, 183),
+                      ),
+                      Divider(),
+                      Text(
+                        "Criar Anuncio",
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              ),
+            ],
+          )),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
