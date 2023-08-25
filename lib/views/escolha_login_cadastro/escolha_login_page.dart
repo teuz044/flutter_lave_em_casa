@@ -113,7 +113,9 @@ class _EscolhaLoginPageState extends State<EscolhaLoginPage> {
                       height: 16,
                     ),
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Modular.to.pushNamed('/home/escolha_login/login_proprietario');
+                        },
                         child: const Row(
                           children: [
                             Icon(Icons.monetization_on_outlined),
@@ -196,7 +198,9 @@ class _EscolhaLoginPageState extends State<EscolhaLoginPage> {
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.green.shade400),
-                        onPressed: () {},
+                        onPressed: () {
+                          Modular.to.pushNamed('/home/escolha_login/login_locatario');
+                        },
                         child: const Row(
                           children: [
                             Icon(Icons.eco_outlined),

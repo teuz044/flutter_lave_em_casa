@@ -3,8 +3,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'auth_service.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginLocatarioPage extends StatelessWidget {
+  const LoginLocatarioPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +14,31 @@ class LoginPage extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 4.0),
-            child: Align(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.arrow_back_ios_new_outlined,
-                  ),
-                  onPressed: () {
-                    Modular.to.pop();
-                  },
-                )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 4.0),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.arrow_back_ios_new_outlined,
+                      ),
+                      onPressed: () {
+                        Modular.to.pop(context);
+                      },
+                    )),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(right: 24.0),
+                child: Text(
+                  'Login - Usuário',
+                  style: TextStyle(
+                      fontFamily: 'Montserrat', fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
           ),
           Flexible(
             child: Container(
@@ -129,12 +142,7 @@ class LoginPage extends StatelessWidget {
                           ],
                         ),
                         onPressed: () => {
-                          if (AuthService.session.isProprietario == false)
-                            {
-                              Modular.to.navigate('/home/login/anuncios_criados')
-                            } else {
-                              Modular.to.navigate('/home/login/home_proprietario') 
-                            }
+                          Modular.to.navigate('/home/escolha_login/login_locatario/anuncios_criados')
                         },
                       ),
                     ),
