@@ -1,24 +1,24 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-
 class AnuncioModel {
-  final int id;
-  final String descricao;
-  final bool disponivel;
-  final int proprietarioId;
-  final String titulo;
-  final double valorLavagem;
+   int? id;
+   String? descricao;
+   bool? disponivel;
+   int? proprietarioId;
+   String? titulo;
+   double? valorLavagem;
+  String? cidade;
   AnuncioModel({
-    required this.id,
-    required this.descricao,
-    required this.disponivel,
-    required this.proprietarioId,
-    required this.titulo,
-    required this.valorLavagem,
+    this.id,
+    this.descricao,
+    this.disponivel,
+    this.proprietarioId,
+    this.titulo,
+    this.valorLavagem,
+    this.cidade,
   });
-
-
+ 
 
   AnuncioModel copyWith({
     int? id,
@@ -27,6 +27,7 @@ class AnuncioModel {
     int? proprietarioId,
     String? titulo,
     double? valorLavagem,
+    String? cidade,
   }) {
     return AnuncioModel(
       id: id ?? this.id,
@@ -35,6 +36,7 @@ class AnuncioModel {
       proprietarioId: proprietarioId ?? this.proprietarioId,
       titulo: titulo ?? this.titulo,
       valorLavagem: valorLavagem ?? this.valorLavagem,
+      cidade: cidade ?? this.cidade,
     );
   }
 
@@ -46,17 +48,19 @@ class AnuncioModel {
       'proprietarioId': proprietarioId,
       'titulo': titulo,
       'valorLavagem': valorLavagem,
+      'cidade': cidade,
     };
   }
 
   factory AnuncioModel.fromMap(Map<String, dynamic> map) {
     return AnuncioModel(
-      id: map['id'] as int,
-      descricao: map['descricao'] as String,
-      disponivel: map['disponivel'] as bool,
-      proprietarioId: map['proprietarioId'] as int,
-      titulo: map['titulo'] as String,
-      valorLavagem: map['valorLavagem'] as double,
+      id: map['id'] != null ? map['id'] as int : null,
+      descricao: map['descricao'] != null ? map['descricao'] as String : null,
+      disponivel: map['disponivel'] != null ? map['disponivel'] as bool : null,
+      proprietarioId: map['proprietarioId'] != null ? map['proprietarioId'] as int : null,
+      titulo: map['titulo'] != null ? map['titulo'] as String : null,
+      valorLavagem: map['valorLavagem'] != null ? map['valorLavagem'] as double : null,
+      cidade: map['cidade'] != null ? map['cidade'] as String : null,
     );
   }
 
@@ -66,7 +70,7 @@ class AnuncioModel {
 
   @override
   String toString() {
-    return 'AnuncioModel(id: $id, descricao: $descricao, disponivel: $disponivel, proprietarioId: $proprietarioId, titulo: $titulo, valorLavagem: $valorLavagem)';
+    return 'AnuncioModel(id: $id, descricao: $descricao, disponivel: $disponivel, proprietarioId: $proprietarioId, titulo: $titulo, valorLavagem: $valorLavagem, cidade: $cidade)';
   }
 
   @override
@@ -79,7 +83,8 @@ class AnuncioModel {
       other.disponivel == disponivel &&
       other.proprietarioId == proprietarioId &&
       other.titulo == titulo &&
-      other.valorLavagem == valorLavagem;
+      other.valorLavagem == valorLavagem &&
+      other.cidade == cidade;
   }
 
   @override
@@ -89,6 +94,7 @@ class AnuncioModel {
       disponivel.hashCode ^
       proprietarioId.hashCode ^
       titulo.hashCode ^
-      valorLavagem.hashCode;
+      valorLavagem.hashCode ^
+      cidade.hashCode;
   }
 }

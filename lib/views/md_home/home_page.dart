@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:lave_em_casa_flutter/views/md_home/controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,6 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  HomeController controller = HomeController();
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -42,6 +45,22 @@ class _HomePageState extends State<HomePage> {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTIZccfNPnqalhrWev-Xo7uBhkor57_rKbkw&usqp=CAU",
     "https://wallpaperaccess.com/full/2637581.jpg"
   ];
+
+  @override
+  void initState()  {
+    super.initState();
+     controller = HomeController();
+     controller.getAnunciosPorCidade().then((value) {
+       setState(() {
+       });
+     });
+     setState(() {
+       });
+  }
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +112,7 @@ class _HomePageState extends State<HomePage> {
             )
           ]),
       body: Padding(
-        padding: const EdgeInsets.only(left: 24.0, right: 24),
+        padding: const EdgeInsets.only(left: 4.0, right: 4),
         child: ListView(
           shrinkWrap: true,
           children: [
@@ -115,18 +134,18 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(
               height: 450,
-              child: ListView.builder(
+              child: controller.isLoading == true ? CircularProgressIndicator() : ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
-                itemCount: 8,
+                itemCount: controller.lstAnuncios.length,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 3,
                     child: ListTile(
-                      title: const Text('Lave aqui', style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600),),
-                      subtitle: const Row(
+                      title: Text(controller.lstAnuncios[index].titulo.toString(), style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600),),
+                      subtitle:  Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text('Endereço'), Text('Preço: 14,00')],
+                        children: [Text(controller.lstAnuncios[index].cidade.toString()), Text('Preço: ${controller.lstAnuncios[index].valorLavagem.toString()}')],
                       ),
                       trailing: Image.asset('assets/img/HOMEM TITULO.png'),
                       onTap: () {},

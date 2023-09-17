@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'auth_service.dart';
-
 class LoginLocatarioPage extends StatelessWidget {
   const LoginLocatarioPage({super.key});
 

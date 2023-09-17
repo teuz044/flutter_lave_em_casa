@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -313,9 +315,11 @@ class _HomeProprietarioPageState extends State<HomeProprietarioPage> {
                         textAlign: TextAlign.center,
                       ),
                     ],
-                  ),
+                  ), 
                 ),
-                onTap: () {},
+                onTap: () {
+                  Modular.to.pushNamed('/home/escolha_login/login_proprietario/home_proprietario/criar_anuncio');
+                },
               ),
             ],
           )),

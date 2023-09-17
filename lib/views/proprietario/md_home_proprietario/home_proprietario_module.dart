@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:lave_em_casa_flutter/views/proprietario/md_criar_anuncio/criar_anuncio_module.dart';
 import 'package:lave_em_casa_flutter/views/proprietario/md_home_proprietario/home_proprietario_page.dart';
 
 class HomeProprietarioModule extends Module {
@@ -10,6 +11,6 @@ class HomeProprietarioModule extends Module {
   @override
   void routes(r) {
     r.child('/', child: (context) => const HomeProprietarioPage());
-    // r.module('/criar_anuncio', module: HomeProprietarioModule());
+    r.module('/criar_anuncio', module: CriarAnuncioModule());
   }
 }

@@ -39,7 +39,7 @@ class _EscolhaLoginPageState extends State<EscolhaLoginPage> {
                         },
                       )),
                 ),
-                Text(
+                const Text(
                   'Qual o seu perfil?',
                   style: TextStyle(
                       fontFamily: 'Montserrat',
@@ -47,7 +47,7 @@ class _EscolhaLoginPageState extends State<EscolhaLoginPage> {
                       fontWeight: FontWeight.bold,
                       fontSize: 24),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Container(
@@ -60,7 +60,7 @@ class _EscolhaLoginPageState extends State<EscolhaLoginPage> {
                           color: Colors.grey.shade300,
                           blurRadius: 2.0, // soften the shadow
                           spreadRadius: 2.0, //extend the shadow
-                          offset: Offset(
+                          offset: const Offset(
                             1.0, // Move to right 5  horizontally
                             1.0, // Move to bottom 5 Vertically
                           ),
@@ -132,7 +132,7 @@ class _EscolhaLoginPageState extends State<EscolhaLoginPage> {
                         ))
                   ]),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 Container(
@@ -145,7 +145,7 @@ class _EscolhaLoginPageState extends State<EscolhaLoginPage> {
                           color: Colors.grey.shade300,
                           blurRadius: 2.0, // soften the shadow
                           spreadRadius: 2.0, //extend the shadow
-                          offset: Offset(
+                          offset: const Offset(
                             1.0, // Move to right 5  horizontally
                             1.0, // Move to bottom 5 Vertically
                           ),

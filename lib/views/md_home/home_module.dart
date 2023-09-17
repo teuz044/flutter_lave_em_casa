@@ -1,9 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lave_em_casa_flutter/views/escolha_login_cadastro/escolha_login_module.dart';
 import 'package:lave_em_casa_flutter/views/md_home/home_page.dart';
-
 import '../md_contatos/contatos_module.dart';
-import '../proprietario/md_login_proprietario/login_proprietario_module.dart';
 
 class HomeModule extends Module {
   @override

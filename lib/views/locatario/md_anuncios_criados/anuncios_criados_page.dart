@@ -1,5 +1,8 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:lave_em_casa_flutter/views/locatario/md_anuncios_criados/controllers/anuncios_controller.dart';
 
 class AnunciosCriadosPage extends StatefulWidget {
   const AnunciosCriadosPage({super.key});
@@ -9,6 +12,8 @@ class AnunciosCriadosPage extends StatefulWidget {
 }
 
 class _AnunciosCriadosPageState extends State<AnunciosCriadosPage> {
+  AnunciosController controller = AnunciosController();
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -30,8 +35,8 @@ class _AnunciosCriadosPageState extends State<AnunciosCriadosPage> {
   void _onItemTapped(int index) {
     if (index == 2) {
       Modular.to.pushNamed('/home/contatos');
-    } else if(index == 0) {
-Modular.to.pushNamed('/home/');
+    } else if (index == 0) {
+      Modular.to.pushNamed('/home/');
     }
     setState(() {
       _selectedIndex = index;
@@ -42,6 +47,20 @@ Modular.to.pushNamed('/home/');
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTIZccfNPnqalhrWev-Xo7uBhkor57_rKbkw&usqp=CAU",
     "https://wallpaperaccess.com/full/2637581.jpg"
   ];
+
+  @override
+  void initState()  {
+    super.initState();
+     controller = AnunciosController();
+     controller.getAnuncios().then((value) {
+       setState(() {
+       });
+     });
+  }
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,27 +95,27 @@ Modular.to.pushNamed('/home/');
           shrinkWrap: true,
           children: [
             Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
-        color: Colors.grey[200],
-      ),
-      child: Row(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.search, color: Colors.grey),
-          ),
-          Expanded(
-            child: TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Pesquisar...',
-                border: InputBorder.none,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+                color: Colors.grey[200],
+              ),
+              child: Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(Icons.search, color: Colors.grey),
+                  ),
+                  Expanded(
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'Pesquisar...',
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
-      ),
-    ),
             const SizedBox(
               height: 8,
             ),
@@ -127,7 +146,9 @@ Modular.to.pushNamed('/home/');
                           ),
                           child: const Row(
                             children: [
-                              SizedBox(width: 4,),
+                              SizedBox(
+                                width: 4,
+                              ),
                               Icon(Icons.filter_alt_outlined),
                               Text('Filtros'),
                             ],
@@ -145,25 +166,27 @@ Modular.to.pushNamed('/home/');
                         width: double.infinity,
                         decoration: const BoxDecoration(
                           color: Colors.white,
-                           boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 1.0, // soften the shadow
-                                spreadRadius: 1.0, //extend the shadow
-                                offset: Offset(
-                                  1.0, // Move to right 5  horizontally
-                                  1.0, // Move to bottom 5 Vertically
-                                ),
-                              )
-                            ],
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 1.0, // soften the shadow
+                              spreadRadius: 1.0, //extend the shadow
+                              offset: Offset(
+                                1.0, // Move to right 5  horizontally
+                                1.0, // Move to bottom 5 Vertically
+                              ),
+                            )
+                          ],
                         ),
                         child: const Row(
-                            children: [
-                              SizedBox(width: 4,),
-                              Icon(Icons.location_city_outlined),
-                              Text('Cidade'),
-                            ],
-                          ),
+                          children: [
+                            SizedBox(
+                              width: 4,
+                            ),
+                            Icon(Icons.location_city_outlined),
+                            Text('Cidade'),
+                          ],
+                        ),
                       ),
                     )
                     // IconButton(
@@ -184,15 +207,20 @@ Modular.to.pushNamed('/home/');
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
-                itemCount: 10,
+                itemCount: controller.lstAnuncios.length,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 3,
                     child: ListTile(
-                      title: const Text('Lave aqui'),
-                      subtitle: const Row(
+                      title:
+                          Text(controller.lstAnuncios[index].titulo.toString()),
+                      subtitle: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text('Endereço'), Text('Preço: 14,00')],
+                        children: [
+                          const Text('Endereço'),
+                          Text(
+                              'Preço: ${controller.lstAnuncios[index].valorLavagem}')
+                        ],
                       ),
                       trailing: Image.asset('assets/img/HOMEM TITULO.png'),
                       onTap: () {},

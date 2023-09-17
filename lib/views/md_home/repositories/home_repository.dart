@@ -1,18 +1,18 @@
+
 import 'package:dio/dio.dart';
 
-import '../models/anuncio_model.dart';
+import '../../locatario/md_anuncios_criados/models/anuncio_model.dart';
 
- class AnunciosCriadosRepository {
+class HomeRepository {
   final dio = Dio();
 
-  Future<List<AnuncioModel>> getAnuncios() async {
+  Future<List<AnuncioModel>> getAnunciosPorCidade(String cidade) async {
     try {
-      final response = await dio.get('http://192.168.1.7:8080/anuncios');
+      final response = await dio.get('http://192.168.1.7:8080/anuncios/$cidade');
       return (response.data as List)
           .map((e) => AnuncioModel.fromMap(e))
           .toList();
     } catch (e) {
-      print(e.toString());
       throw Exception('Erro ao buscar anúncios: $e');
     }
   }
