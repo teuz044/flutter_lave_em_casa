@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:lave_em_casa_flutter/views/proprietario/md_login_proprietario/controllers/login_proprietario_controller.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  LoginProprietarioController controller = LoginProprietarioController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +65,7 @@ class LoginPage extends StatelessWidget {
                     height: 20,
                   ),
                   TextFormField(
+                    controller: controller.cpfEC,
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       labelText: "E-mail",
@@ -74,6 +83,7 @@ class LoginPage extends StatelessWidget {
                     height: 10,
                   ),
                   TextFormField(
+                    controller: controller.senhaEC,
                     keyboardType: TextInputType.text,
                     obscureText: true,
                     decoration: const InputDecoration(
@@ -139,9 +149,12 @@ class LoginPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        onPressed: () => {
-                          Modular.to.navigate(
-                              '/home/escolha_login/login_proprietario/home_proprietario')
+                        onPressed: () async {
+                          bool logado = await controller.login();
+                          logado == true
+                              ? Modular.to.navigate(
+                                  '/home/escolha_login/login_proprietario/home_proprietario')
+                              : Text('NAO AUTORIZADO');
                         },
                       ),
                     ),

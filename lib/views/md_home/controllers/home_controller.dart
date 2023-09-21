@@ -10,11 +10,12 @@ class HomeController {
 
   bool isLoading = false;
 
-  Future<void> getAnunciosPorCidade() async{
-    isLoading = true;
+ Future<void> getAnunciosPorCidade() async {
     try {
-    lstAnuncios = await _homeRepository.getAnunciosPorCidade('Recife');
-    isLoading = false;
+      isLoading = true;
+      lstAnuncios = await _homeRepository.getAnunciosPorCidade('Recife');
+      isLoading = false;
+      print(isLoading.toString());
     } catch (e) {
       print(e.toString());
       isLoading = false;

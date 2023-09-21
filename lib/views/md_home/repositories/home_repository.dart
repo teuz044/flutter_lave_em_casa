@@ -8,7 +8,7 @@ class HomeRepository {
 
   Future<List<AnuncioModel>> getAnunciosPorCidade(String cidade) async {
     try {
-      final response = await dio.get('http://192.168.1.7:8080/anuncios/$cidade');
+      final response = await dio.get('http://192.168.1.15:8080/anuncios/$cidade');
       return (response.data as List)
           .map((e) => AnuncioModel.fromMap(e))
           .toList();
