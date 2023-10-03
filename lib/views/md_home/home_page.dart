@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  HomeController controller = HomeController();
+  final controller = Modular.get<HomeController>();
 
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
@@ -49,16 +49,15 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState()  {
     super.initState();
-     controller = HomeController();
      controller.getAnunciosPorCidade().then((value) {
        setState(() {
        });
      });
-     setState(() {
-       });
+   
   }
   @override
   void dispose() {
+
     super.dispose();
   }
 
@@ -67,7 +66,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: Text('Bem vindo!'),
+        title: const Text('Bem vindo!'),
           backgroundColor: const Color(0xFF0B3D6F),
           leading: Padding(
             padding: const EdgeInsets.only(top: 8.0, bottom: 8  , left: 24),
@@ -88,25 +87,7 @@ class _HomePageState extends State<HomePage> {
                       child: const Text(
                         'Entrar',
                         style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),
-                      )), // IconButton(
-                  //   onPressed: () {},
-                  //   icon: const Icon(
-                  //     Icons.notifications_active_outlined,
-                  //     size: 30,
-                  //     color: Colors.blue,
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   width: 16,
-                  // ),
-                  // IconButton(
-                  //   onPressed: () {},
-                  //   icon: const Icon(
-                  //     Icons.favorite_border_outlined,
-                  //     size: 30,
-                  //     color: Colors.blue,
-                  //   ),
-                  // ),
+                      )), 
                 ],
               ),
             )
@@ -132,9 +113,9 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 16,
             ),
-            SizedBox(
+            controller.isLoading == true ? Center(child: const CircularProgressIndicator(strokeWidth: 3.0,)) : SizedBox(
               height: 450,
-              child: controller.isLoading == true ? CircularProgressIndicator() : ListView.builder(
+              child:  ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 itemCount: controller.lstAnuncios.length,
@@ -142,13 +123,16 @@ class _HomePageState extends State<HomePage> {
                   return Card(
                     elevation: 3,
                     child: ListTile(
-                      title: Text(controller.lstAnuncios[index].titulo.toString(), style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600),),
+                      title: Text(controller.lstAnuncios[index].titulo.toString(), style: const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600),),
                       subtitle:  Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text(controller.lstAnuncios[index].cidade.toString()), Text('Preço: ${controller.lstAnuncios[index].valorLavagem.toString()}')],
+                        children: [Text(controller.lstAnuncios[index].cidade.toString()), Text('Preço: R\$${controller.lstAnuncios[index].valorLavagem.toString()}')],
                       ),
                       trailing: Image.asset('assets/img/HOMEM TITULO.png'),
-                      onTap: () {},
+                      onTap: () {
+                        controller.selecionarAnuncio(index);
+                        Modular.to.pushNamed('/home/detalhes_anuncio_home');
+                      },
                     ),
                   );
                 },

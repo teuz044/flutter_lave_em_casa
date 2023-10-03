@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lave_em_casa_flutter/views/proprietario/md_criar_anuncio/controllers/criar_anuncio_controller.dart';
+import 'package:provider/provider.dart';
+
+import '../../session/auth_provider.dart';
 
 class CriarAnuncioPage extends StatefulWidget {
   const CriarAnuncioPage({super.key});
@@ -14,7 +17,11 @@ class _CriarAnuncioPageState extends State<CriarAnuncioPage> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+       final usuarioModel = authProvider.usuarioModel!;
+      int idUsuarioLogado = usuarioModel['id']; //
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
           backgroundColor: const Color(0xFF0B3D6F),
@@ -23,6 +30,13 @@ class _CriarAnuncioPageState extends State<CriarAnuncioPage> {
                 Modular.to.pop();
               },
               icon: const Icon(Icons.arrow_back_ios_new_outlined)),
+              title:  const Text(
+                'Crie seu anuncio',
+                style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 16.0),
@@ -32,26 +46,18 @@ class _CriarAnuncioPageState extends State<CriarAnuncioPage> {
                     padding:
                         const EdgeInsets.only(top: 10.0, bottom: 10, left: 24),
                     child: Image.asset('assets/img/logopngpequena.png'),
-                  ),
+                  ), 
                 ],
               ),
             ),
           ]),
       body: Padding(
-        padding: const EdgeInsets.all(24.0),
+        padding: const EdgeInsets.only(bottom: 24.0, left: 24, right: 24),
         child: Container(
           alignment: Alignment.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Crie seu anuncio',
-                style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 24),
               TextFormField(
                 controller: criarAnuncioController.tituloEC,
                 decoration: const InputDecoration(
@@ -99,25 +105,15 @@ class _CriarAnuncioPageState extends State<CriarAnuncioPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
-              TextFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Tags do anúncio',
-                  labelStyle: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+
               const SizedBox(height: 16),
               Flexible(
-                child: criarAnuncioController.isLoading == true ? CircularProgressIndicator() : ElevatedButton(
+                child: criarAnuncioController.isLoading == true ? const CircularProgressIndicator() : ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(400, 40)),
                     onPressed: () async{
                       setState(() {});
-                      await criarAnuncioController.setAnuncio().then((value) {
+                      await criarAnuncioController.setAnuncio(idUsuarioLogado).then((value) {
                         setState(() {});
                         Modular.to.pop();
                       });

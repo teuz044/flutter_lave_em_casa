@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:provider/provider.dart';
+
+import '../../session/auth_provider.dart';
 
 class HomeProprietarioPage extends StatefulWidget {
   const HomeProprietarioPage({super.key});
@@ -12,6 +15,7 @@ class HomeProprietarioPage extends StatefulWidget {
 
 class _HomeProprietarioPageState extends State<HomeProprietarioPage> {
   int _selectedIndex = 0;
+ 
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
@@ -47,6 +51,9 @@ class _HomeProprietarioPageState extends State<HomeProprietarioPage> {
 
   @override
   Widget build(BuildContext context) {
+     final authProvider = Provider.of<AuthProvider>(context);
+       final usuarioModel = authProvider.usuarioModel!;
+      final nomeDoUsuario = usuarioModel['nome']; // Supondo que o nome do usuário esteja em 'nome' no modelo
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -60,8 +67,8 @@ class _HomeProprietarioPageState extends State<HomeProprietarioPage> {
               padding: const EdgeInsets.only(right: 16.0),
               child: Row(
                 children: [
-                  const Text(
-                    'Bem vindo ao menu do proprietário!',
+                   Text(
+                    'Bem vindo ${nomeDoUsuario}',
                     style: TextStyle(fontFamily: 'Montserrat'),
                   ),
                   IconButton(

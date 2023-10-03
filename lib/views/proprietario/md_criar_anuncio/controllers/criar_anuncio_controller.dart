@@ -11,14 +11,14 @@ class CriarAnuncioController {
   final valorLavagemEC = TextEditingController();
   final cidadeEC = TextEditingController();
 
-  Future<void> setAnuncio() async {
+  Future<void> setAnuncio(int proprietarioId) async {
     isLoading = true;
     await repository.postAnuncios(
         4,
         AnuncioModel(
             descricao: descricaoEC.text,
             disponivel: true,
-            proprietarioId: 4,
+            proprietarioId: proprietarioId,
             titulo: tituloEC.text,
             valorLavagem: double.tryParse(valorLavagemEC.text) ?? 0,
             cidade: cidadeEC.text, id: 0));

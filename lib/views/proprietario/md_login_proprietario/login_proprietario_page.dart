@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lave_em_casa_flutter/views/proprietario/md_login_proprietario/controllers/login_proprietario_controller.dart';
@@ -68,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: controller.cpfEC,
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
-                      labelText: "E-mail",
+                      labelText: "Cpf",
                       labelStyle: TextStyle(
                         color: Colors.black38,
                         fontWeight: FontWeight.w400,
@@ -150,11 +152,22 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
                         onPressed: () async {
-                          bool logado = await controller.login();
-                          logado == true
-                              ? Modular.to.navigate(
-                                  '/home/escolha_login/login_proprietario/home_proprietario')
-                              : Text('NAO AUTORIZADO');
+                          bool logado = await controller.login(context);
+                          switch (logado) {
+                            case true:
+                              Modular.to.navigate(
+                                  '/home/escolha_login/login_proprietario/home_proprietario');
+                              break;
+                            case false:
+                              const snackBar = SnackBar(
+                                backgroundColor: Colors.red,
+                                content: Text('Login ou senha inválidos'),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                              break;
+                            default:
+                          }
                         },
                       ),
                     ),
