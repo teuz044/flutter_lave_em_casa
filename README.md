@@ -1,10 +1,10 @@
 # Lave em Casa - Flutter
 
-A ideia do lave em casa é ser um aplicativo facilitador para pessoas que tem uma máquina de lavar roupa e querem alugar e pessoas que precisam lavar suas roupas, mas não veem necessidade de comprar uma máquina. Sei que existem lavanderias, mas nosso preço seria abaixo da média, assim como a Uber e os Taxis.
+O "Lave em Casa" é um aplicativo inovador criado para simplificar a vida daqueles que possuem uma máquina de lavar roupa disponível para aluguel e para aqueles que desejam lavar suas roupas sem a necessidade de adquirir uma máquina própria. Nossa proposta é oferecer serviços de lavagem de roupas a preços competitivos, seguindo o modelo de economia compartilhada, semelhante ao da Uber e dos táxis.
 
-Essa ideia surgiu em um hackathon, o Projeto Start by Acccenture, eu e a equipe que eu fazia parte vencemos o hackathon com essa ideia, desenvolvemos em HTML, CSS e JS. Decidi agora rescrever com Flutter.
+A ideia inicial para este projeto surgiu durante o Projeto Start, um hackathon promovido pela Acccenture. A equipe da qual eu fazia parte teve a honra de vencer o hackathon com essa ideia. Inicialmente, o projeto foi desenvolvido utilizando tecnologias como HTML, CSS e JavaScript. Agora, estou em processo de reescrita do aplicativo utilizando Flutter, uma tecnologia versátil e eficiente.
 
-Por enquanto estou focando no módulo dos usuários proprietários.
+Neste estágio, estou concentrando meus esforços no módulo voltado para os usuários proprietários.
 
 ## Status do Projeto
 
