@@ -1,16 +1,25 @@
-# lave_em_casa_flutter
+# Lave em Casa - Flutter
 
-A new Flutter project.
+A ideia do lave em casa é ser um aplicativo facilitador para pessoas que tem uma máquina de lavar roupa e querem alugar e pessoas que precisam lavar suas roupas, mas não veem necessidade de comprar uma máquina. Sei que existem lavanderias, mas nosso preço seria abaixo da média, assim como a Uber e os Taxis.
 
-## Getting Started
+Essa ideia surgiu em um hackathon, o Projeto Start by Acccenture, eu e a equipe que eu fazia parte vencemos o hackathon com essa ideia, desenvolvemos em HTML, CSS e JS. Decidi agora rescrever com Flutter.
 
-This project is a starting point for a Flutter application.
+Por enquanto estou focando no módulo dos usuários proprietários.
 
-A few resources to get you started if this is your first Flutter project:
+## Status do Projeto
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Em desenvolvimento
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## API
+
+A api estou desenvolvendo em Java 17 com Spring boot, algumas funcionalidades são;
+  - Validação de token com JWT, Spring security
+  - Mysql como banco de dados, hospedei-o no Heroku
+    
+## Flutter
+  - Modular
+  - Provider
+  - SharedPreferences
+
+## Implementações futuras
+  - Mobx como gerenciador de estados
